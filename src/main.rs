@@ -9,8 +9,15 @@ use std::path::Path;
 fn exec(proc_name: String) {
     let mut args_iter = proc_name.split_whitespace();
     let to_exec = args_iter.next();
-    // println!("{}", proc_name);
+    // let mut args = [args_iter.next().unwrap()]; // TODO: take first element out of iter, add rest to here
+
+    let mut args = args_iter.collect::<Vec<&str>>();
+    // if let Some(index) = args.iter().position(|&i| i == 0) {
+    //     args.remove(index); // remove the element at the position index (2)
+    // }
+
     let status = Command::new(to_exec.unwrap())
+        .args(&args)
         .status()
         .unwrap_or_else(|e| panic!("failed to execute process: {}", e));
 
