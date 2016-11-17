@@ -1,0 +1,6 @@
+[package]
+name = "mirsh"
+version = "0.1.0"
+authors = ["Joshua Beitler <joshbeitler@gmail.com>"]
+
+[dependencies]
